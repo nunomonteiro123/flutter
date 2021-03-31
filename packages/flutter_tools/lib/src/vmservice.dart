@@ -312,6 +312,21 @@ Future<FlutterVmService> connectToVmService(
   );
 }
 
+Future<vm_service.VmService> createVmServiceDelegate(
+  Uri wsUri, {
+    io.CompressionOptions compression = io.CompressionOptions.compressionDefault,
+  }) async {
+  final io.WebSocket channel = await _openChannel(wsUri.toString(), compression: compression);
+  return vm_service.VmService(
+    channel,
+    channel.add,
+    log: null,
+    disposeHandler: () async {
+      await channel.close();
+    },
+  );
+}
+
 Future<FlutterVmService> _connect(
   Uri httpUri, {
   ReloadSources reloadSources,
@@ -323,14 +338,8 @@ Future<FlutterVmService> _connect(
   Device device,
 }) async {
   final Uri wsUri = httpUri.replace(scheme: 'ws', path: globals.fs.path.join(httpUri.path, 'ws'));
-  final io.WebSocket channel = await _openChannel(wsUri.toString(), compression: compression);
-  final vm_service.VmService delegateService = vm_service.VmService(
-    channel,
-    channel.add,
-    log: null,
-    disposeHandler: () async {
-      await channel.close();
-    },
+  final vm_service.VmService delegateService = await createVmServiceDelegate(
+    wsUri, compression: compression
   );
 
   final vm_service.VmService service = await setUpVmService(

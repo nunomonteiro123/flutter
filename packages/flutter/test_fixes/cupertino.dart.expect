@@ -115,6 +115,7 @@ void main() {
   NoDefaultCupertinoThemeData.resolveFrom(context);
   CupertinoTextThemeData.resolveFrom(context);
   CupertinoTextThemeData.resolveFrom(context);
+<<<<<<< HEAD
 
   // Changes made in https://github.com/flutter/flutter/pull/72043
   CupertinoTextField(maxLengthEnforcement: MaxLengthEnforcement.enforce);
@@ -127,4 +128,6 @@ void main() {
   // Changes made in https://github.com/flutter/flutter/pull/59127
   const BottomNavigationBarItem bottomNavigationBarItem = BottomNavigationBarItem(label: myTitle);
   bottomNavigationBarItem.label;
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
 }

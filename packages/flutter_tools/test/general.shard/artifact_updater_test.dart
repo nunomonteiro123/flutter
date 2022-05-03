@@ -47,7 +47,11 @@ void main() {
   });
 
   testWithoutContext('ArtifactUpdater can download a zip archive and delete stale files', () async {
+<<<<<<< HEAD
     final FakeOperatingSystemUtils operatingSystemUtils = FakeOperatingSystemUtils();
+=======
+    final MockOperatingSystemUtils operatingSystemUtils = MockOperatingSystemUtils();
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
     final MemoryFileSystem fileSystem = MemoryFileSystem.test();
     final BufferLogger logger = BufferLogger.test();
     final ArtifactUpdater artifactUpdater = ArtifactUpdater(
@@ -55,7 +59,11 @@ void main() {
       logger: logger,
       operatingSystemUtils: operatingSystemUtils,
       platform: testPlatform,
+<<<<<<< HEAD
       httpClient: FakeHttpClient.any(),
+=======
+      httpClient: MockHttpClient(),
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
       tempStorage: fileSystem.currentDirectory.childDirectory('temp')
         ..createSync(),
     );
@@ -66,7 +74,11 @@ void main() {
 
     await artifactUpdater.downloadZipArchive(
       'test message',
+<<<<<<< HEAD
       Uri.parse('http://test.zip'),
+=======
+      Uri.parse('http:///test.zip'),
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
       fileSystem.currentDirectory.childDirectory('out'),
     );
     expect(logger.statusText, contains('test message'));
@@ -77,7 +89,11 @@ void main() {
 
   testWithoutContext('ArtifactUpdater will not validate the md5 hash if the '
     'x-goog-hash header is present but missing an md5 entry', () async {
+<<<<<<< HEAD
     final FakeOperatingSystemUtils operatingSystemUtils = FakeOperatingSystemUtils();
+=======
+    final MockOperatingSystemUtils operatingSystemUtils = MockOperatingSystemUtils();
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
     final MemoryFileSystem fileSystem = MemoryFileSystem.test();
     final BufferLogger logger = BufferLogger.test();
 

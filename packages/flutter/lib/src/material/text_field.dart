@@ -1302,7 +1302,7 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
       semanticsMaxValueLength = null;
     }
 
-    return MouseRegion(
+    child = MouseRegion(
       cursor: effectiveMouseCursor,
       onEnter: (PointerEnterEvent event) => _handleHover(true),
       onExit: (PointerExitEvent event) => _handleHover(false),
@@ -1319,7 +1319,10 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
                   _effectiveController.selection = TextSelection.collapsed(offset: _effectiveController.text.length);
                 _requestKeyboard();
               },
+<<<<<<< HEAD
               onDidGainAccessibilityFocus: handleDidGainAccessibilityFocus,
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
               child: child,
             );
           },
@@ -1330,5 +1333,13 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
         ),
       ),
     );
+
+    if (kIsWeb) {
+      return Shortcuts(
+        shortcuts: scrollShortcutOverrides,
+        child: child,
+      );
+    }
+    return child;
   }
 }

@@ -166,6 +166,7 @@ void main() {
   // Changes made in https://github.com/flutter/flutter/pull/68905
   MaterialBasedCupertinoThemeData.resolveFrom(context, nullOk: true);
   MaterialBasedCupertinoThemeData.resolveFrom(context, nullOk: false);
+<<<<<<< HEAD
 
   // Changes made in https://github.com/flutter/flutter/pull/72043
   TextField(maxLengthEnforced: true);
@@ -286,4 +287,6 @@ void main() {
     textSelectionHandleColor: Colors.yellow,
     useTextSelectionTheme: false,
   );
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
 }

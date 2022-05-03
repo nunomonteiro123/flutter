@@ -121,6 +121,7 @@ class ReorderableListView extends StatefulWidget {
   /// constructor. Even more efficient, however, is to create the instances
   /// on demand using this constructor's `itemBuilder` callback.
   ///
+<<<<<<< HEAD
   /// This example creates a list using the
   /// [ReorderableListView.builder] constructor. Using the [IndexedWidgetBuilder], The
   /// list items are built lazily on demand.
@@ -159,6 +160,8 @@ class ReorderableListView extends StatefulWidget {
   ///
   /// ```
   /// {@end-tool}
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
   /// See also:
   ///
   ///   * [ReorderableListView], which allows you to build a reorderable
@@ -328,6 +331,110 @@ class ReorderableListView extends StatefulWidget {
 }
 
 class _ReorderableListViewState extends State<ReorderableListView> {
+<<<<<<< HEAD
+=======
+  // This entry contains the scrolling list itself.
+  late OverlayEntry _listOverlayEntry;
+
+  @override
+  void initState() {
+    super.initState();
+    _listOverlayEntry = OverlayEntry(
+      opaque: true,
+      builder: (BuildContext context) {
+        return _ReorderableListContent(
+          itemBuilder: widget.itemBuilder,
+          itemCount: widget.itemCount,
+          onReorder: widget.onReorder,
+          proxyDecorator: widget.proxyDecorator,
+          buildDefaultDragHandles: widget.buildDefaultDragHandles,
+          padding: widget.padding,
+          header: widget.header,
+          scrollDirection: widget.scrollDirection,
+          reverse: widget.reverse,
+          scrollController: widget.scrollController,
+          primary: widget.primary,
+          physics: widget.physics,
+          shrinkWrap: widget.shrinkWrap,
+          anchor: widget.anchor,
+          cacheExtent: widget.cacheExtent,
+          dragStartBehavior: widget.dragStartBehavior,
+          keyboardDismissBehavior: widget.keyboardDismissBehavior,
+          restorationId: widget.restorationId,
+          clipBehavior: widget.clipBehavior,
+        );
+      },
+    );
+  }
+
+  @override
+  void didUpdateWidget(ReorderableListView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // As this depends on pretty much everything, it
+    // is ok to mark this as dirty unconditionally.
+    _listOverlayEntry.markNeedsBuild();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    assert(debugCheckHasMaterialLocalizations(context));
+    return Overlay(
+      initialEntries: <OverlayEntry>[
+        _listOverlayEntry
+      ],
+    );
+  }
+}
+
+class _ReorderableListContent extends StatefulWidget {
+  const _ReorderableListContent({
+    required this.itemBuilder,
+    required this.itemCount,
+    required this.onReorder,
+    required this.proxyDecorator,
+    required this.buildDefaultDragHandles,
+    required this.padding,
+    required this.header,
+    required this.scrollDirection,
+    required this.reverse,
+    required this.scrollController,
+    required this.primary,
+    required this.physics,
+    required this.shrinkWrap,
+    required this.anchor,
+    required this.cacheExtent,
+    required this.dragStartBehavior,
+    required this.keyboardDismissBehavior,
+    required this.restorationId,
+    required this.clipBehavior,
+  });
+
+  final IndexedWidgetBuilder itemBuilder;
+  final int itemCount;
+  final ReorderCallback onReorder;
+  final ReorderItemProxyDecorator? proxyDecorator;
+  final bool buildDefaultDragHandles;
+  final EdgeInsets? padding;
+  final Widget? header;
+  final Axis scrollDirection;
+  final bool reverse;
+  final ScrollController? scrollController;
+  final bool? primary;
+  final ScrollPhysics? physics;
+  final bool shrinkWrap;
+  final double anchor;
+  final double? cacheExtent;
+  final DragStartBehavior dragStartBehavior;
+  final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
+  final String? restorationId;
+  final Clip clipBehavior;
+
+  @override
+  _ReorderableListContentState createState() => _ReorderableListContentState();
+}
+
+class _ReorderableListContentState extends State<_ReorderableListContent> {
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
   Widget _wrapWithSemantics(Widget child, int index) {
     void reorder(int startIndex, int endIndex) {
       if (startIndex != endIndex)
@@ -387,6 +494,7 @@ class _ReorderableListViewState extends State<ReorderableListView> {
 
   Widget _itemBuilder(BuildContext context, int index) {
     final Widget item = widget.itemBuilder(context, index);
+<<<<<<< HEAD
     assert(() {
       if (item.key == null) {
         throw FlutterError(
@@ -395,6 +503,8 @@ class _ReorderableListViewState extends State<ReorderableListView> {
       }
       return true;
     }());
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
 
     // TODO(goderbauer): The semantics stuff should probably happen inside
     //   _ReorderableItem so the widget versions can have them as well.

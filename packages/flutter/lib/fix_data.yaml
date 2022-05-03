@@ -15,6 +15,7 @@
 version: 1
 transforms:
 
+<<<<<<< HEAD
   # Changes made in https://github.com/flutter/flutter/pull/66482
   - title: "Migrate to 'TextSelectionThemeData'"
     date: 2020-09-24
@@ -697,6 +698,8 @@ transforms:
         kind: 'fragment'
         value: 'arguments[maxLengthEnforced]'
 
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
   # Changes made in https://github.com/flutter/flutter/pull/68905.
   - title: "Migrate from 'nullOk'"
     date: 2021-01-27

@@ -166,6 +166,7 @@ void main() {
   // Changes made in https://github.com/flutter/flutter/pull/68905
   MaterialBasedCupertinoThemeData.resolveFrom(context);
   MaterialBasedCupertinoThemeData.resolveFrom(context);
+<<<<<<< HEAD
 
   // Changes made in https://github.com/flutter/flutter/pull/72043
   TextField(maxLengthEnforcement: MaxLengthEnforcement.enforce);
@@ -258,4 +259,6 @@ void main() {
   ThemeData.raw(
     textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.blue, selectionColor: Colors.red, selectionHandleColor: Colors.yellow,),
   );
+=======
+>>>>>>> 4d7946a68d26794349189cf21b3f68cc6fe61dcb
 }
